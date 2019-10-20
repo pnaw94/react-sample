@@ -1,0 +1,41 @@
+.Article {
+    width: 60vw;
+}
+
+.Article-heading {
+    background-color: gray;
+
+    font-size: 30pt;
+    font-weight: bold;
+
+    padding: 0 10pt;
+    margin: 0;
+
+    border-bottom: 1px solid black;
+
+    color: white;
+}
+
+.Article-body {
+    display: grid;
+    grid-column-gap: 10pt;
+    grid-template-columns: 30% 70%;
+
+    background-color: silver;
+
+    padding: 10pt;
+    margin: 0;
+
+    color: white;
+    font-size: 15pt;
+}
+
+.Article-main-image {
+    max-width: 100%;
+    border: 1px solid black;
+}
+
+.Article-author {
+    font-size: 15pt;
+    font-weight: normal;
+}
