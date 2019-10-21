@@ -18,8 +18,8 @@ describe('ArticleMetadata', () => {
 
         const childDivs = wrapper.children().find('div');
         expect(childDivs.at(0).text()).toEqual('Type: ' + type);
-        expect(childDivs.at(1).text()).toEqual('Created at: ' + createdAt.toLocaleString());
-        expect(childDivs.at(2).text()).toEqual('Last modified: ' + updatedAt.toLocaleString());
-        expect(childDivs.at(3).text()).toEqual('Status: ' + status);
+        expect(childDivs.at(1).text()).toEqual('Status: ' + status);
+        expect(childDivs.at(2).text()).toEqual('Created at: ' + createdAt.toLocaleString());
+        expect(childDivs.at(3).text()).toEqual('Last modified: ' + updatedAt.toLocaleString());
     });
 });
