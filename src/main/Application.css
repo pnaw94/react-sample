@@ -1,17 +1,20 @@
 .App-header {
-  background-color: #282c34;
-  min-height: 20vh;
+  min-height: 5vh;
+  background-color: silver;
+
+  font-weight: bold;
+
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+  padding: 0 10pt;
 }
 
 .App-body {
   background-color: #282c34;
-  min-height: 80vh;
+  min-height: 95vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,6 +23,16 @@
   color: white;
 }
 
-.App-link {
-  color: #09d3ac;
+.Loader-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Error-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

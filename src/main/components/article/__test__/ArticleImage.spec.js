@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import ArticleImage from '../ArticleImage';
 
-describe('Article Image', () => {
+describe('ArticleImage', () => {
     it('renders image with given source', () => {
         // given
         const url = 'sample-url';

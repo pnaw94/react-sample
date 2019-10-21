@@ -4,30 +4,44 @@ import './Application.css';
 
 import { fetchArticle } from './web/article/ArticleService';
 import Article from './components/article/Article';
+import SpinnerLoader from './components/common/SpinnerLoader';
+import ErrorMessage from './components/common/ErrorMessage';
 
 class Application extends React.Component {
-  state = {
-    data: {},
-    isLoading: true
-  };
+    state = { loading: true, result: null, data: {} };
 
-  componentDidMount() {
-    fetchArticle("https://my12.digitalexperience.ibm.com/api/859f2008-a40a-4b92-afd0-24bb44d10124/delivery/v1/content/fa9519d5-0363-4b8d-8e1f-627d802c08a8")
-    .then(data => this.setState({ data, isLoading: false }));
-  }
+    articleId = 'fa9519d5-0363-4b8d-8e1f-627d802c08a8';
+    onArticleLoaded = this.props.onArticleLoaded || (() => {});
 
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          ARTICLE
-        </header>
-        <main className="App-body">
-          {!this.state.isLoading && <Article article={this.state.data} />}
-        </main>
-      </div>
-    );
-  }
+    componentDidMount() {
+        fetchArticle(this.articleId)
+            .then(article => this.setState({
+                loading: false,
+                result: article.result,
+                data: article.data
+            }))
+            .then(this.onArticleLoaded);
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <header className="App-header">
+                    Displaying article: {this.articleId}
+                </header>
+                <main className="App-body">
+                    {this.state.loading ? <SpinnerLoader text="Loading article..." /> : this.renderResult()}
+                </main>
+            </div>
+        );
+    }
+
+    renderResult() {
+        const { result, data } = this.state;
+        if (result === 'success') return <Article article={data} />;
+        if (result === 'not-found') return <ErrorMessage text="Article not found..." />;
+        return <ErrorMessage text="Unexpected error..." />;
+    }
 }
 
 export default Application;

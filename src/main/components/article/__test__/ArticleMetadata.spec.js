@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ArticleMetadata from '../ArticleMetadata';
 
-describe('Article Metadata', () => {
+describe('ArticleMetadata', () => {
     it('renders text with article type, created date, updated date, and status', () => {
         // given
         const status = 'status';

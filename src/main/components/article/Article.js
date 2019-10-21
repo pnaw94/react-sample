@@ -9,11 +9,6 @@ import ArticleImage from './ArticleImage';
 import ArticleMetadata from './ArticleMetadata';
 
 class Article extends React.Component {
-    // TODO: Validate input
-    props = {
-        article: {},
-    };
-
     render() {
         const { article } = this.props;
         const thumbnailUrl = getServiceUrl(article.thumbnail.url);
