@@ -1,11 +1,13 @@
 import React from 'react';
 import htmlParser from 'html-react-parser';
 
-const renderSimpleText = (values, className) => {
+const renderSimpleText = (values, className, inline) => {
+    const Wrapper = inline ? 'span' : 'div';
+    const ValueWrapper = inline ? 'span' : 'p';
     return (
-        <div className={className}>
-            {values.map(val => <p>{val}</p>)}
-        </div>
+        <Wrapper className={className}>
+            {values.map(val => <ValueWrapper>{val}</ValueWrapper>)}
+        </Wrapper>
     );
 }
 
@@ -19,15 +21,13 @@ const renderFormattedText = (values, className) => {
 
 const renderersMap = {
     text: renderSimpleText,
-    formattedtext: renderFormattedText,
-    datetime: () => <div />,
-    group: () => <div />
+    formattedtext: renderFormattedText
 };
 
-const ArticleElement = ({ element, className }) => {
-    const renderer = renderersMap[element.elementType]; // TODO: Unknown types?
+const ArticleElement = ({ element, className, inline }) => {
+    const renderer = renderersMap[element.elementType] || renderersMap.text;
     const actualValue = element.values || [element.value];
-    return renderer(actualValue, className);
+    return renderer(actualValue, className, inline);
 };
 
 export default ArticleElement;

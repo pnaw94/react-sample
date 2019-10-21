@@ -4,7 +4,7 @@ import errorImage from '../../../assets/error-image.png';
 
 const ErrorMessage = ({ text }) => {
     return (
-        <div className="Error-message" >
+        <div className="Center-popup" >
             <img src={errorImage} alt="Error" />
             <div>{text}</div>
         </div>

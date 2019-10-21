@@ -52,4 +52,20 @@ describe('ArticleService', () => {
         expect(result.result).toEqual('unexpected');
         expect(result.data).toEqual(expectedError.response.data);
     });
+    afterEach(() => mockAxios.reset());
+
+    it('should return unexpected-data result when connection refused', async () => {
+        // given
+        const expectedError = {};
+
+        // when
+        const resultPromise = fetchArticle(defaultArticleId);
+        mockAxios.mockError(expectedError);
+        const result = await resultPromise;
+
+
+        // then
+        expect(result.result).toEqual('unexpected');
+        expect(result.data).toEqual({});
+    });
 });

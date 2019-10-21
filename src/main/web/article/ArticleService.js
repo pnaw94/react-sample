@@ -15,7 +15,10 @@ class ArticleFetchResult {
 const fetchArticle = (id) => {
     return axios.get(getApiUrl(articlePath + '/' + id))
         .then(response => ({ result: 'success', data: response.data }))
-        .catch(({ response }) => ({ result: response.status === 404 ? 'not-found' : 'unexpected', data: response.data}))
+        .catch(error => {
+            const response = error.response || {};   
+            return { result: response.status === 404 ? 'not-found' : 'unexpected', data: response.data || {}}
+        })
         .then(data => new ArticleFetchResult(data));
 }
 

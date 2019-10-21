@@ -3,17 +3,27 @@
 }
 
 .Article-heading {
-    background-color: gray;
+    color: white;
+    background-color: darkslategray;
 
-    font-size: 30pt;
-    font-weight: bold;
-
-    padding: 0 10pt;
+    padding: 10pt;
     margin: 0;
 
     border-bottom: 1px solid black;
+}
 
-    color: white;
+.Article-heading p {
+    margin: 10pt 0;
+}
+
+.Article-title {
+    font-size: 30pt;
+    font-weight: bold;
+}
+
+.Article-author {
+    font-size: 12pt;
+    font-weight: normal;
 }
 
 .Article-body {
@@ -21,21 +31,29 @@
     grid-column-gap: 10pt;
     grid-template-columns: 30% 70%;
 
-    background-color: silver;
+    background-color: snow;
 
     padding: 10pt;
     margin: 0;
 
-    color: white;
+    color: black;
     font-size: 15pt;
+}
+
+.Article-body p {
+    margin: 0;
+}
+
+.Article-meta {
+    margin: 10pt 0;
+    font-size: 12pt;
+}
+
+.Article-meta > * {
+    margin: 4pt 0;
 }
 
 .Article-main-image {
     max-width: 100%;
     border: 1px solid black;
-}
-
-.Article-author {
-    font-size: 15pt;
-    font-weight: normal;
 }
