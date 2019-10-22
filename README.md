@@ -2,7 +2,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Requirements
 
-`Node.js 10.16`
+`Node.js 10.16+`
+
+(Optional) `Docker 18+`
 
 ## Available Scripts
 
@@ -30,3 +32,12 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## Running with Docker
+
+A sample Docker image is created to help running the application without required node.js version. The docker image is NOT production-optimized, and runs simple development server (as `npm start` would).
+
+```
+docker build -t sample-react .
+docker run -p 3000:3000 sample-react
+```
