@@ -2,6 +2,7 @@ import React from 'react';
 
 import './Application.css';
 
+import { withBackoffRetry } from './web/common/WebUtils'
 import { fetchArticle } from './web/article/ArticleService';
 import Article from './components/article/Article';
 import SpinnerLoader from './components/common/SpinnerLoader';
@@ -14,11 +15,15 @@ class Application extends React.Component {
     onArticleLoaded = this.props.onArticleLoaded || (() => {});
 
     componentDidMount() {
-        fetchArticle(this.articleId)
+        withBackoffRetry(5)(() => fetchArticle(this.articleId))
             .then(article => this.setState({
                 loading: false,
                 result: article.result,
                 data: article.data
+            }))
+            .catch(error => this.setState({
+                loading: false,
+                result: error.result
             }))
             .then(this.onArticleLoaded);
     }
